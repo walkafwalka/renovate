@@ -178,7 +178,10 @@ export function getRegistryRepository(
   }
   let repository = split.join('/');
   if (!registry) {
-    registry = registryUrl;
+    registry = registryUrl.replace(
+      'https://docker.io',
+      'https://index.docker.io'
+    );
   }
   if (registry === 'docker.io') {
     registry = 'index.docker.io';
