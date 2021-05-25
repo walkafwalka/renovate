@@ -191,5 +191,19 @@ describe(getName(), () => {
         }
       `);
     });
+
+    it('handles gitlab project images', () => {
+      expect(splitImageParts('registry.mygitlab.test/jobs/docker/base:latest'))
+        .toMatchInlineSnapshot(`
+        Object {
+          "currentDigest": undefined,
+          "currentValue": "latest",
+          "depName": "docker/base",
+          "registryUrls": Array [
+            "https://registry.mygitlab.test/jobs",
+          ],
+        }
+      `);
+    });
   });
 });

@@ -52,5 +52,16 @@ describe(getName(), () => {
       );
       expect(res).toMatchSnapshot();
     });
+
+    it('supports gitlab project images', () => {
+      const res = dockerCommon.getRegistryRepository(
+        'docker/base',
+        'https://registry.mygitlab.test/jobs'
+      );
+      expect(res).toMatchObject({
+        registry: 'https://registry.mygitlab.test',
+        repository: 'jobs/docker/base',
+      });
+    });
   });
 });
